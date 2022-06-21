@@ -13,7 +13,9 @@ export const getSubraphFromSymbol = async (symbol) => {
             }              
         }
     `;
+    console.log(configsQuery)
     for (let i = 0; i < networks.length; i += 1) {
+      console.log(networks[i])
       const resp = await querySubgraph(configsQuery, networks[i]);
       for (let j = 0; j < resp.data.configs.length; j += 1){
         if (resp.data.configs[j].symbol == symbol) {
