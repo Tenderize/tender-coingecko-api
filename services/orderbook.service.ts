@@ -35,7 +35,7 @@ class OrderBookService {
     res = await querySubgraph(query, subgraphURL);
     res.data.tokenExchanges.map((x) => {
         // TODO: check oreder here
-        if(x.soldID == 1){
+        if(x.soldID == 0){
         data.bids.push([x.tokensSold, x.tokensBought])
         } else {
         data.bids.push([ x.tokensBought, x.tokensSold])
