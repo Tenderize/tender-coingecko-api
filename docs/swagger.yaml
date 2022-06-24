@@ -5,7 +5,7 @@ info:
   title: "Tenderize API"
   contact:
     email: "reuben@tenderize.me"
-host: "https://tenderize-api.vercel.app/"
+host: "tenderize-api.vercel.app/"
 schemes:
 - "https"
 paths:
