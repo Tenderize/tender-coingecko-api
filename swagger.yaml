@@ -1,0 +1,162 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Tenderize API"
+  contact:
+    email: "reuben@tenderize.me"
+host: "add"
+schemes:
+- "https"
+paths:
+  /pairs:
+    get:
+      tags:
+      - "coingecko"
+      summary: "Return all pairs traded on TenderSwap V0"
+      description: ""
+      operationId: "getPairs"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Pair"
+  /tickers:
+    get:
+      tags:
+      - "coingecko"
+      summary: "Return tickers of all pools on TenderSwap V0"
+      description: ""
+      operationId: "getTickers"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Ticker"
+  /orderbook:
+    get:
+      tags:
+      - "coingecko"
+      summary: "Return orderbook of a pool"
+      description: ""
+      operationId: "getOrderbook"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - in: query
+          name: ticker_id
+          type: string
+          description: The ticker_id of the pool eg. "tLPT-LPT"
+        - in: query
+          name: depth
+          type: number
+          description: The number of entries to return
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/OrderBook"
+  /total-supply:
+    get:
+      tags:
+      - "coingecko"
+      summary: "Return total supply of a tendertoken"
+      description: ""
+      operationId: "getTotalSupply"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - in: query
+          name: symbol
+          type: string
+          description: Symbol of the TenderToken eg. "tLPT"
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            type: "string"
+            example: "123102304.12334"
+definitions:
+  Pair:
+    type: "object"
+    properties:
+      ticker_id:
+        type: "string"
+        example: "tLPT-LPT"
+      base:
+        type: "string"
+        example: "tLPT"
+      target:
+        type: "string"
+        example: "LPT"
+      pool_id:
+        type: "string"
+        example: "0x2429fC7082eb517C14946b392b195B181D0b9781"
+  Ticker:
+    type: "object"
+    properties:
+      ticker_id:
+        type: "string"
+        example: "tLPT-LPT"
+      base:
+        type: "string"
+        example: "tLPT"
+      target:
+        type: "string"
+        example: "LPT"
+      pool_id:
+        type: "string"
+        example: "0x2429fC7082eb517C14946b392b195B181D0b9781"
+      last_price:
+        type: "string"
+        example: "0.99234123"
+      base_volume:
+        type: "string"
+        example: "10002300230240"
+      target_volume:
+        type: "string"
+        example: "10012041024002"
+  OrderBook:
+    type: "object"
+    properties:
+      ticker_id:
+        type: "string"
+        example: "tLPT-LPT"
+      timestamp:
+        type: "string"
+        example: "1656065310"
+      bids:
+        type: "array"
+        items:
+          type: "array"
+          items: 
+            type: string
+            example: "1000000"
+      asks:
+        type: "array"
+        items:
+          type: "array"
+          items: 
+            type: string
+            example: "1000000"
+externalDocs:
+  description: "Tenderize Website"
+  url: "https://tenderize.me"
