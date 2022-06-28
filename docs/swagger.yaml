@@ -5,7 +5,7 @@ info:
   title: "Tenderize API"
   contact:
     email: "reuben@tenderize.me"
-host: "tenderize-api.vercel.app/"
+host: "tenderize-api.vercel.app"
 schemes:
 - "https"
 paths:
@@ -146,17 +146,13 @@ definitions:
       bids:
         type: "array"
         items:
-          type: "array"
-          items: 
-            type: string
-            example: "1000000"
+          type: string
+          example: ["1000000", "1000000"]
       asks:
         type: "array"
         items:
-          type: "array"
-          items: 
-            type: string
-            example: "1000000"
+          type: string
+          example: ["1000000", "1000000"]
 externalDocs:
   description: "Tenderize Website"
   url: "https://tenderize.me"
