@@ -1,3 +1,4 @@
+import { formatUnits } from "ethers/lib/utils";
 import { querySubgraph } from "../external/subgraph";
 import { OrderBook } from "../interfaces/orderbook.interface";
 
@@ -36,9 +37,9 @@ class OrderBookService {
     res.data.tokenExchanges.map((x) => {
         // TODO: check oreder here
         if(x.soldID == 0){
-        data.bids.push([x.tokensSold, x.tokensBought])
+        data.bids.push([formatUnits(x.tokensSold), formatUnits(x.tokensBought)])
         } else {
-        data.bids.push([ x.tokensBought, x.tokensSold])
+        data.bids.push([formatUnits(x.tokensBought), formatUnits(x.tokensSold)])
         }
     })
 

@@ -2,6 +2,7 @@ import { querySubgraph } from '../external/subgraph';
 import { getTargetPrice } from '../external/contracts';
 import { BigNumber } from 'ethers';
 import { Ticker } from '../interfaces/ticker.interface';
+import { formatUnits } from 'ethers/lib/utils';
 
 class TickerService {
   public async findAllTickers(subgraphURL : string): Promise<Ticker[]> {
@@ -52,6 +53,14 @@ class TickerService {
         data[x.steakAddress].base_volume = BigNumber.from(data[x.steakAddress].base_volume).add(baseVolume).toString();
         data[x.steakAddress].target_volume = BigNumber.from(data[x.steakAddress].target_volume).add(targetVolume).toString();
     })
+
+    // Format to ethers from gwei
+    // TODO: Improve this
+    let keys = Object.keys(data)
+    for (let i = 0; i < keys.length; i++){
+        data[keys[i]].base_volume = formatUnits(data[keys[i]].base_volume)
+        data[keys[i]].target_volume = formatUnits(data[keys[i]].target_volume)
+    }
 
     return Object.values(data)
   }
