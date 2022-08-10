@@ -37,9 +37,9 @@ class OrderBookService {
     res.data.tokenExchanges.map((x) => {
         // TODO: check oreder here
         if(x.soldID == 0){
-        data.bids.push([formatUnits(x.tokensSold), formatUnits(x.tokensBought)])
+            data.bids.push([formatUnits(x.tokensBought), formatUnits(x.tokensSold)])
         } else {
-        data.bids.push([formatUnits(x.tokensBought), formatUnits(x.tokensSold)])
+            data.bids.push([formatUnits(x.tokensSold), formatUnits(x.tokensBought)])
         }
     })
 
