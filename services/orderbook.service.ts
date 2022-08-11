@@ -33,7 +33,7 @@ class OrderBookService {
             query {        
             tokenExchanges(where:{
                     steakAddress:"${res.data.configs[0].steak}",
-                    soldId: 1
+                    soldId: 0
                 }, 
                 first: 100, skip: ${skip}, orderBy: timestamp, orderDirection: desc){
                 tokensSold
@@ -53,7 +53,7 @@ class OrderBookService {
             query {        
             tokenExchanges(where:{
                     steakAddress:"${res.data.configs[0].steak}",
-                    soldId: 0
+                    soldId: 1
                 }, 
                 first: 100, skip: ${skip}, orderBy: timestamp, orderDirection: desc){
                 tokensSold
